@@ -1,0 +1,52 @@
+{
+    "name": "adminetic/announcement",
+    "description": "Announcement Module for Adminetic Adminetic Admin Panel",
+    "keywords": [
+        "adminetic",
+        "announcement"
+    ],
+    "homepage": "https://github.com/adminetic/announcement",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Pratik Shrestha",
+            "email": "pratikdai404@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0",
+        "laravel/slack-notification-channel": "^2.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Adminetic\\Announcement\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Adminetic\\Announcement\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Adminetic\\Announcement\\Provider\\AnnouncementServiceProvider"
+            ]
+        }
+    }
+}
