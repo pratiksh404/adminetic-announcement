@@ -29,25 +29,27 @@
                                 <!-- cd-timeline Start-->
                                 <section class="cd-container" id="cd-timeline">
                                     @foreach ($announcements as $announcement)
-                                        <div class="cd-timeline-block">
-                                            <a href="{{ adminShowRoute('announcement', $announcement->id) }}">
-                                                <div
-                                                    class="cd-timeline-img cd-picture bg-{{ $announcement->color ?? 'primary' }}">
-                                                    <i class="icofont icofont-bullhorn"></i>
-                                                </div>
-                                            </a>
-                                            <div class="cd-timeline-content">
-                                                @isset($announcement->body)
-                                                    {!! $announcement->body !!}
-                                                @endisset
+                                        @if (in_array(auth()->user()->id, $announcement->audience))
+                                            <div class="cd-timeline-block">
                                                 <a href="{{ adminShowRoute('announcement', $announcement->id) }}">
-                                                    <span
-                                                        class="cd-date">{{ $announcement->created_at->toDayDateTimeString() }}
-                                                        -
-                                                        {{ $announcement->user->name ?? 'N/A' }}</span></span>
+                                                    <div
+                                                        class="cd-timeline-img cd-picture bg-{{ $announcement->color ?? 'primary' }}">
+                                                        <i class="icofont icofont-bullhorn"></i>
+                                                    </div>
                                                 </a>
+                                                <div class="cd-timeline-content">
+                                                    @isset($announcement->body)
+                                                        {!! $announcement->body !!}
+                                                    @endisset
+                                                    <a href="{{ adminShowRoute('announcement', $announcement->id) }}">
+                                                        <span
+                                                            class="cd-date">{{ $announcement->created_at->toDayDateTimeString() }}
+                                                            -
+                                                            {{ $announcement->user->name ?? 'N/A' }}</span></span>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endforeach
                                 </section>
                                 <br>

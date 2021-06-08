@@ -12,6 +12,6 @@ trait AnnouncementUser
      */
     public function routeNotificationForSlack($notification)
     {
-        return config('announcement.slack_webhook');
+        return env('SLACK_WEBHOOK', '');
     }
 }

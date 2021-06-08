@@ -38,7 +38,7 @@ class AnnouncementPolicy
      */
     public function view(User $user, Announcement $announcement)
     {
-        return $user->userCanDo('Announcement', 'read');
+        return in_array($user->id, $announcement->audience) && $user->userCanDo('Announcement', 'read');
     }
 
     /**

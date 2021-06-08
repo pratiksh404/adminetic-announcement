@@ -1,5 +1,5 @@
     <li class="onhover-dropdown">
-        <div class="notification-box"><i data-feather="bell"> </i><span
+        <div class="notification-box"><i class="fa fa-bullhorn"> </i><span
                 class="badge rounded-pill badge-secondary">{{ $unread_notifications->count() }}
             </span></div>
         <ul class="notification-dropdown onhover-show-div">

@@ -19,8 +19,9 @@
     </div>
     <x-adminetic-card title="announcement" route="announcement">
         <x-slot name="buttons">
-            <a href="{{ adminCreateRoute('announcement') }}" class="btn btn-primary btn-air-primary">Create
+            <a href="{{ adminCreateRoute('announcement') }}" class="btn btn-primary btn-air-primary mx-1">Create
                 Announcement</a>
+            <a href="{{ adminRedirectRoute('timeline') }}" class="btn btn-info btn-air-info mx-1">Timeline</a>
         </x-slot>
         <x-slot name="content">
             {{-- ================================Card================================ --}}
@@ -34,13 +35,15 @@
                 </thead>
                 <tbody>
                     @foreach ($announcements as $announcement)
-                        <tr>
-                            <td>{{ $announcement->user->name ?? 'N/A' }}</td>
-                            <td>{{ $announcement->created_at->toDayDateTimeString() }}</td>
-                            <td>
-                                <x-adminetic-action :model="$announcement" route="announcement" />
-                            </td>
-                        </tr>
+                        @if (in_array(auth()->user()->id, $announcement->audience))
+                            <tr>
+                                <td>{{ $announcement->user->name ?? 'N/A' }}</td>
+                                <td>{{ $announcement->created_at->toDayDateTimeString() }}</td>
+                                <td>
+                                    <x-adminetic-action :model="$announcement" route="announcement" />
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
                 <tfoot>
