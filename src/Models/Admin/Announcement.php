@@ -3,8 +3,8 @@
 namespace Adminetic\Announcement\Models\Admin;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Announcement extends Model
@@ -42,7 +42,7 @@ class Announcement extends Model
     // Casts
     protected $casts = [
         'medium' => 'array',
-        'audience' => 'array'
+        'audience' => 'array',
     ];
 
     // Relation
@@ -56,21 +56,25 @@ class Announcement extends Model
     {
         return User::find($this->audience)->pluck('name')->toArray();
     }
+
     public function getColorAttribute()
     {
         $colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'pink', 'grey'];
+
         return $colors[array_rand($colors, 1)];
     }
+
     public function mediums()
     {
         if (isset($this->medium)) {
             foreach ($this->medium as $val) {
-                $mediums[] =  [
+                $mediums[] = [
                     1 => 'database',
                     2 => 'mail',
-                    3 => 'slack'
+                    3 => 'slack',
                 ][$val];
             }
+
             return $mediums;
         } else {
             return null;

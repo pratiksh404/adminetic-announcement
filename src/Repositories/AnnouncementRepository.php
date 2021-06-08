@@ -2,13 +2,13 @@
 
 namespace Adminetic\Announcement\Repositories;
 
+use Adminetic\Announcement\Contracts\AnnouncementRepositoryInterface;
+use Adminetic\Announcement\Http\Requests\AnnouncementRequest;
+use Adminetic\Announcement\Models\Admin\Announcement;
+use Adminetic\Announcement\Notifications\AnnouncementNotification;
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Notification;
-use Adminetic\Announcement\Models\Admin\Announcement;
-use Adminetic\Announcement\Http\Requests\AnnouncementRequest;
-use Adminetic\Announcement\Notifications\AnnouncementNotification;
-use Adminetic\Announcement\Contracts\AnnouncementRepositoryInterface;
 
 class AnnouncementRepository implements AnnouncementRepositoryInterface
 {
@@ -20,6 +20,7 @@ class AnnouncementRepository implements AnnouncementRepositoryInterface
                 return Announcement::latest()->get();
             }))
             : Announcement::latest()->get();
+
         return compact('announcements');
     }
 
@@ -27,6 +28,7 @@ class AnnouncementRepository implements AnnouncementRepositoryInterface
     public function createAnnouncement()
     {
         $users = User::all();
+
         return compact('users');
     }
 
@@ -43,6 +45,7 @@ class AnnouncementRepository implements AnnouncementRepositoryInterface
     public function showAnnouncement(Announcement $announcement)
     {
         $this->markAsRead($announcement);
+
         return compact('announcement');
     }
 
@@ -50,6 +53,7 @@ class AnnouncementRepository implements AnnouncementRepositoryInterface
     public function editAnnouncement(Announcement $announcement)
     {
         $users = User::all();
+
         return compact('announcement', 'users');
     }
 

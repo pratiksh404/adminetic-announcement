@@ -2,8 +2,8 @@
 
 namespace Adminetic\Announcement\Contracts;
 
-use Adminetic\Announcement\Models\Admin\Announcement;
 use Adminetic\Announcement\Http\Requests\AnnouncementRequest;
+use Adminetic\Announcement\Models\Admin\Announcement;
 
 interface AnnouncementRepositoryInterface
 {
