@@ -2,11 +2,10 @@
 
 namespace Adminetic\Announcement\Mail;
 
+use Adminetic\Announcement\Models\Admin\Announcement;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Adminetic\Announcement\Models\Admin\Announcement;
 
 class AnnouncementMail extends Mailable
 {
