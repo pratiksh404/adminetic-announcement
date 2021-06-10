@@ -42,6 +42,14 @@ SLACK_WEBHOOK=your_slack_webhook_link
 
 for more information visit [Laravel Slack Routing](https://laravel.com/docs/8.x/notifications#routing-slack-notifications)
 
+register announcement module adapter in app/adminetic.php
+```php
+    // Adapters
+    'adapters' => [
+        Adminetic\Announcement\Adapter\AnnouncementAdapter::class,
+    ]
+```
+
 ### Announcement Notification widget
 
 If you wish to add announcement notification widget on your header located in views/admin/layouts/components/header.blade.php add
