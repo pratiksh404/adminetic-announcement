@@ -2,17 +2,16 @@
 
 namespace Adminetic\Announcement\Adapter;
 
-use Adminetic\Announcement\View\Components\AnnouncementNotificationBell;
 use Pratiksh\Adminetic\Contracts\PluginInterface;
-use Pratiksh\Adminetic\Services\Helper\Adapter;
 use Pratiksh\Adminetic\Traits\SidebarHelper;
 
 class AnnouncementAdapter implements PluginInterface
 {
     use SidebarHelper;
+
     public function assets(): array
     {
-        return  array(
+        return  [
             [
                 'name' => 'Timeline',
                 'active' => true,
@@ -28,13 +27,13 @@ class AnnouncementAdapter implements PluginInterface
                         'location' => 'adminetic/assets/js/modernizr.js',
                     ],
                 ],
-            ]
-        );
+            ],
+        ];
     }
 
     public function myMenu(): array
     {
-        return  array(
+        return  [
             [
                 'type' => 'menu',
                 'name' => 'Announcement',
@@ -42,7 +41,7 @@ class AnnouncementAdapter implements PluginInterface
                 'is_active' => request()->routeIs('announcement*') ? 'active' : '',
                 'pill' => [
                     'class' => 'badge badge-info badge-air-info',
-                    'value' => "plugin",
+                    'value' => 'plugin',
                 ],
                 'conditions' => [
                     [
@@ -55,7 +54,7 @@ class AnnouncementAdapter implements PluginInterface
                     ],
                 ],
                 'children' => array_merge(
-                    array([
+                    [[
                         'type' => 'submenu',
                         'name' => 'Timeline',
                         'is_active' => request()->routeIs('timeline') ? 'active' : '',
@@ -66,17 +65,17 @@ class AnnouncementAdapter implements PluginInterface
                                 'condition' => auth()->user()->can('view-any', Announcement::class),
                             ],
                         ],
-                    ]),
+                    ]],
                     $this->indexCreateChildren('announcement', Announcement::class)
-                )
-            ]
-        );
+                ),
+            ],
+        ];
     }
 
     public function headerComponents(): array
     {
         return [
-            '<x-announcement-announcement-notification-bell />'
+            '<x-announcement-announcement-notification-bell />',
         ];
     }
 }

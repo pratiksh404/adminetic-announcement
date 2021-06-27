@@ -2,9 +2,9 @@
 
 namespace Adminetic\Announcement\Policies;
 
+use Adminetic\Announcement\Models\Admin\Announcement;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Adminetic\Announcement\Models\Admin\Announcement;
 
 class AnnouncementPolicy
 {
@@ -16,7 +16,6 @@ class AnnouncementPolicy
             return true;
         }
     }
-
 
     /**
      * Determine whether the user can view any models.

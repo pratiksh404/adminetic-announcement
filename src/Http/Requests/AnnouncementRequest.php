@@ -2,8 +2,8 @@
 
 namespace Adminetic\Announcement\Http\Requests;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AnnouncementRequest extends FormRequest
 {
@@ -40,7 +40,7 @@ class AnnouncementRequest extends FormRequest
             'user_id' => 'required|numeric',
             'medium' => 'sometimes',
             'audience' => 'required',
-            'body' => 'required|max:6000'
+            'body' => 'required|max:6000',
         ];
     }
 }

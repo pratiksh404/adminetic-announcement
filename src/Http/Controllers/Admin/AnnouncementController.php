@@ -2,10 +2,10 @@
 
 namespace Adminetic\Announcement\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Adminetic\Announcement\Models\Admin\Announcement;
-use Adminetic\Announcement\Http\Requests\AnnouncementRequest;
 use Adminetic\Announcement\Contracts\AnnouncementRepositoryInterface;
+use Adminetic\Announcement\Http\Requests\AnnouncementRequest;
+use Adminetic\Announcement\Models\Admin\Announcement;
+use App\Http\Controllers\Controller;
 
 class AnnouncementController extends Controller
 {
@@ -16,7 +16,6 @@ class AnnouncementController extends Controller
         $this->announcementRepositoryInterface = $announcementRepositoryInterface;
         $this->authorizeResource(Announcement::class, 'announcement');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -47,6 +46,7 @@ class AnnouncementController extends Controller
     public function store(AnnouncementRequest $request)
     {
         $this->announcementRepositoryInterface->storeAnnouncement($request);
+
         return redirect(adminRedirectRoute('announcement'))->withSuccess('Announcement Created Successfully.');
     }
 
@@ -82,6 +82,7 @@ class AnnouncementController extends Controller
     public function update(AnnouncementRequest $request, Announcement $announcement)
     {
         $this->announcementRepositoryInterface->updateAnnouncement($request, $announcement);
+
         return redirect(adminRedirectRoute('announcement'))->withInfo('Announcement Updated Successfully.');
     }
 
@@ -94,17 +95,17 @@ class AnnouncementController extends Controller
     public function destroy(Announcement $announcement)
     {
         $this->announcementRepositoryInterface->destroyAnnouncement($announcement);
+
         return redirect(adminRedirectRoute('announcement'))->withFail('Announcement Deleted Successfully.');
     }
 
     /**
-     *
-     * Timeline
-     *
+     * Timeline.
      */
     public function timeline()
     {
         $announcements = Announcement::latest()->paginate(6);
+
         return view('announcement::admin.announcement.timeline', compact('announcements'));
     }
 }
