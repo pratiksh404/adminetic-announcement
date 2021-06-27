@@ -36,7 +36,9 @@ class AnnouncementRepository implements AnnouncementRepositoryInterface
         $announcement = Announcement::create($request->validated());
         // Sending Notification
         $audiences = User::find($announcement->audience);
-        Notification::send($audiences, new AnnouncementNotification($announcement));
+        foreach ($audiences as $audience) {
+            $audience->setSlackUrl(env('SLACK_WEBHOOK'))->notify(new AnnouncementNotification($announcement));
+        }
     }
 
     // Announcement Show
