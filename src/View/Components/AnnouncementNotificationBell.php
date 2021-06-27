@@ -2,8 +2,8 @@
 
 namespace Adminetic\Announcement\View\Components;
 
-use Illuminate\View\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\Component;
 
 class AnnouncementNotificationBell extends Component
 {
@@ -25,6 +25,7 @@ class AnnouncementNotificationBell extends Component
     public function render()
     {
         $unread_notifications = Auth::user()->unreadNotifications;
+
         return view('announcement::admin.components.announcement-notification-bell', compact('unread_notifications'));
     }
 }
