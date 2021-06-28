@@ -3,6 +3,7 @@
 namespace Adminetic\Announcement\Repositories;
 
 use Adminetic\Announcement\Contracts\AnnouncementRepositoryInterface;
+use Adminetic\Announcement\Events\AnnouncementMadeEvent;
 use Adminetic\Announcement\Http\Requests\AnnouncementRequest;
 use Adminetic\Announcement\Models\Admin\Announcement;
 use Adminetic\Announcement\Notifications\AnnouncementNotification;
@@ -37,16 +38,7 @@ class AnnouncementRepository implements AnnouncementRepositoryInterface
     {
         $announcement = Announcement::create($request->validated());
         // Sending Notification
-        $audiences = User::find($announcement->audience);
-        if (env('SLACK_WEBHOOK') != null && env('SLACK_WEBHOOK') != '') {
-            foreach ($audiences as $audience) {
-                $audience->setSlackUrl(env('SLACK_WEBHOOK'))->notify(new AnnouncementNotification($announcement));
-            }
-        } else {
-            foreach ($audiences as $audience) {
-                $audience->notify(new AnnouncementNotification($announcement));
-            }
-        }
+        event(new AnnouncementMadeEvent($announcement));
     }
 
     // Announcement Show

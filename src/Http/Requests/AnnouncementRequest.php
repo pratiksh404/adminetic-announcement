@@ -40,6 +40,7 @@ class AnnouncementRequest extends FormRequest
             'user_id' => 'required|numeric',
             'medium' => 'sometimes',
             'audience' => 'required',
+            'slack_notify' => 'sometimes|boolean',
             'body' => 'required|max:6000',
         ];
     }

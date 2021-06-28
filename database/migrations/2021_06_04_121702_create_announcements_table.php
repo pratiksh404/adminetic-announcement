@@ -19,6 +19,7 @@ class CreateAnnouncementsTable extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->json('medium')->nullable();
             $table->json('audience');
+            $table->boolean('slack_notify')->default(1);
             $table->text('body');
             $table->timestamps();
         });

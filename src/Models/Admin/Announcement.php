@@ -71,7 +71,6 @@ class Announcement extends Model
                 $mediums[] = [
                     1 => 'database',
                     2 => 'mail',
-                    3 => 'slack',
                 ][$val];
             }
 

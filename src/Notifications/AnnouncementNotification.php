@@ -48,20 +48,6 @@ class AnnouncementNotification extends Notification
     }
 
     /**
-     * Get the Slack representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\SlackMessage
-     */
-    public function toSlack($notifiable)
-    {
-        return (new SlackMessage)
-            ->from(setting('title', config('adminetic.title', 'Adminetic')).' - '.$this->announcement->user->name ?? 'N/A')
-            ->image(getLogo())
-            ->content($this->announcement->body);
-    }
-
-    /**
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable

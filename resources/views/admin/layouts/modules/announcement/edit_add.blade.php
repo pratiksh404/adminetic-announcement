@@ -25,10 +25,16 @@
                         {{ isset($announcement->medium) ? (in_array(2, $announcement->medium) ? 'checked' : '') : '' }}>
                     <label for="checkbox-dis">Email</label>
                 </div>
-                <div class="checkbox">
-                    <input name="medium[]" id="checkbox-chk" type="checkbox" value="3"
-                        {{ isset($announcement->medium) ? (in_array(3, $announcement->medium) ? 'checked' : '') : '' }}>
-                    <label for="checkbox-chk">Slack</label>
+                <div class="media mb-2">
+                    <label class="col-form-label m-r-10">Slack Notification</label>
+                    <div class="media-body text-end icon-state">
+                        <label class="switch">
+                            <input type="hidden" name="slack_notify" value="0">
+                            <input type="checkbox" name="slack_notify" value="1"
+                                {{isset($announcement->slack_notify) ? ($announcement->slack_notify ? 'checked' : '') : 'checked'}}><span
+                                class="switch-state"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,12 +42,11 @@
             <label>Audience</label>
             <div class="col">
                 @foreach ($users as $user)
-                    <div class="checkbox">
-                        <input name="audience[]" id="user{{ $user->id }}" type="checkbox"
-                            value="{{ $user->id }}"
-                            {{ isset($announcement->audience) ? in_array($user->id, $announcement->audience) ? 'checked' : '' : 'checked' }}>
-                        <label for="user{{ $user->id }}">{{ $user->name }}</label>
-                    </div>
+                <div class="checkbox">
+                    <input name="audience[]" id="user{{ $user->id }}" type="checkbox" value="{{ $user->id }}"
+                        {{ isset($announcement->audience) ? in_array($user->id, $announcement->audience) ? 'checked' : '' : 'checked' }}>
+                    <label for="user{{ $user->id }}">{{ $user->name }}</label>
+                </div>
                 @endforeach
             </div>
         </div>
