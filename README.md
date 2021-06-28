@@ -3,11 +3,8 @@
 ![Adminetic Announcemment Module](https://github.com/pratiksh404/adminetic-announcement/blob/main/screenshots/banner.png)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/adminetic/announcement.svg?style=flat-square)](https://packagist.org/packages/adminetic/announcement)
-<<<<<<< HEAD
-[![Stars](https://img.shields.io/github/stars/pratiksh404/adminetic-announcement)](https://github.com/pratiksh404/adminetic-announcement/stargazers) [![Downloads](https://img.shields.io/packagist/dt/pratiksh/adminetic.svg?style=flat-square)](https://packagist.org/packages/pratiksh/adminetic) [![StyleCI](https://github.styleci.io/repos/373894934/shield?branch=main)](https://github.styleci.io/repos/373894934?branch=main) [![Build Status](https://scrutinizer-ci.com/g/pratiksh404/adminetic-announcement/badges/build.png?b=main)](https://scrutinizer-ci.com/g/pratiksh404/adminetic-announcement/build-status/main) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pratiksh404/adminetic-announcement/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/pratiksh404/adminetic-announcement/?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/pratiksh404/adminetic-announcement/badge)](https://www.codefactor.io/repository/github/pratiksh404/adminetic-announcement) [![License](https://img.shields.io/github/license/pratiksh404/adminetic-announcement)](//packagist.org/packages/pratiksh/adminetic)
-=======
+
 [![Stars](https://img.shields.io/github/stars/pratiksh404/adminetic-announcement)](https://github.com/pratiksh404/adminetic-announcement/stargazers) [![Downloads](https://img.shields.io/packagist/dt/adminetic/announcement.svg?style=flat-square)](https://packagist.org/packages/adminetic/announcement) [![StyleCI](https://github.styleci.io/repos/372560942/shield?branch=main)](https://github.styleci.io/repos/372560942?branch=main) [![Build Status](https://scrutinizer-ci.com/g/pratiksh404/adminetic-announcement/badges/build.png?b=main)](https://scrutinizer-ci.com/g/pratiksh404/adminetic-announcement/build-status/main) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/pratiksh404/adminetic-announcement/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/pratiksh404/adminetic-announcement/?branch=main) [![CodeFactor](https://www.codefactor.io/repository/github/pratiksh404/adminetic-announcement/badge)](https://www.codefactor.io/repository/github/pratiksh404/adminetic-announcement) [![License](https://img.shields.io/github/license/pratiksh404/adminetic-announcement)](//packagist.org/packages/pratiksh/adminetic)
->>>>>>> f77d0dff746e276418879de0e168ab0b5f01b5f1
 
 Announcement module for Adminetic Admin Panel
 
@@ -47,6 +44,7 @@ SLACK_WEBHOOK=your_slack_webhook_link
 for more information visit [Laravel Slack Routing](https://laravel.com/docs/8.x/notifications#routing-slack-notifications)
 
 register announcement module adapter in app/adminetic.php
+
 ```php
     // Adapters
     'adapters' => [
