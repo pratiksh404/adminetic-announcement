@@ -2,10 +2,9 @@
 
 namespace Adminetic\Announcement\Provider;
 
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Adminetic\Announcement\Events\AnnouncementMadeEvent;
 use Adminetic\Announcement\Listeners\AnnouncementMadeListener;
-
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class AnnouncementEventServiceProvider extends ServiceProvider
 {

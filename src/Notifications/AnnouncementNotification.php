@@ -5,7 +5,6 @@ namespace Adminetic\Announcement\Notifications;
 use Adminetic\Announcement\Mail\AnnouncementMail;
 use Adminetic\Announcement\Models\Admin\Announcement;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
 
 class AnnouncementNotification extends Notification
