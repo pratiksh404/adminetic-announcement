@@ -2,11 +2,11 @@
 
 namespace Adminetic\Announcement\Notifications;
 
-use Illuminate\Bus\Queueable;
-use League\HTMLToMarkdown\HtmlConverter;
-use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Messages\SlackMessage;
 use Adminetic\Announcement\Models\Admin\Announcement;
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Messages\SlackMessage;
+use Illuminate\Notifications\Notification;
+use League\HTMLToMarkdown\HtmlConverter;
 
 class SlackAnnouncementNotification extends Notification
 {
@@ -44,7 +44,7 @@ class SlackAnnouncementNotification extends Notification
     public function toSlack($notifiable)
     {
         return (new SlackMessage)
-            ->from(setting('title', config('adminetic.title', 'Adminetic')) . ' - ' . $this->announcement->user->name ?? 'N/A')
+            ->from(setting('title', config('adminetic.title', 'Adminetic')).' - '.$this->announcement->user->name ?? 'N/A')
             ->image(getLogo())
             ->content((new HtmlConverter())->convert($this->announcement->body));
     }

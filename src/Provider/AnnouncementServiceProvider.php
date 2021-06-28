@@ -2,17 +2,14 @@
 
 namespace Adminetic\Announcement\Provider;
 
+use Adminetic\Announcement\Contracts\AnnouncementRepositoryInterface;
+use Adminetic\Announcement\Models\Admin\Announcement;
+use Adminetic\Announcement\Policies\AnnouncementPolicy;
+use Adminetic\Announcement\Repositories\AnnouncementRepository;
+use Adminetic\Announcement\View\Components\AnnouncementNotificationBell;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Adminetic\Announcement\Models\Admin\Announcement;
-use Adminetic\Announcement\Policies\AnnouncementPolicy;
-use Adminetic\Announcement\Events\AnnouncementMadeEvent;
-use Adminetic\Announcement\Listeners\AnnouncementMadeListener;
-use Adminetic\Announcement\Repositories\AnnouncementRepository;
-use Adminetic\Announcement\Contracts\AnnouncementRepositoryInterface;
-use Adminetic\Announcement\Provider\AnnouncementEventServiceProvider;
-use Adminetic\Announcement\View\Components\AnnouncementNotificationBell;
 
 class AnnouncementServiceProvider extends ServiceProvider
 {
@@ -62,15 +59,15 @@ class AnnouncementServiceProvider extends ServiceProvider
     {
         // Publish Config File
         $this->publishes([
-            __DIR__ . '/../../config/announcement.php' => config_path('announcement.php'),
+            __DIR__.'/../../config/announcement.php' => config_path('announcement.php'),
         ], 'announcement-config');
         // Publish View Files
         $this->publishes([
-            __DIR__ . '/../../resources/views' => resource_path('views/vendor/adminetic/plugin/announcement'),
+            __DIR__.'/../../resources/views' => resource_path('views/vendor/adminetic/plugin/announcement'),
         ], 'announcement-views');
         // Publish Migration Files
         $this->publishes([
-            __DIR__ . '/../../database/migrations' => database_path('migrations'),
+            __DIR__.'/../../database/migrations' => database_path('migrations'),
         ], 'announcement-migrations');
     }
 
@@ -81,8 +78,8 @@ class AnnouncementServiceProvider extends ServiceProvider
      */
     protected function registerResource()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations'); // Loading Migration Files
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'announcement'); // Loading Views Files
+        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations'); // Loading Migration Files
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'announcement'); // Loading Views Files
         $this->registerRoutes();
     }
 
@@ -94,7 +91,7 @@ class AnnouncementServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+            $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
         });
     }
 
